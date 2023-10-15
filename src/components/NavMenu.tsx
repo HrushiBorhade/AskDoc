@@ -53,8 +53,10 @@ const components: { title: string; href: string; description: string }[] = [
   //     "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
   // },
 ];
-
-export default function NavMenu() {
+type Prop = {
+  isAuth: boolean;
+};
+export default function NavMenu({ isAuth }: Prop) {
   return (
     <NavigationMenu className="rounded-full border border-slate-300 p-1">
       <NavigationMenuList>
@@ -101,6 +103,7 @@ export default function NavMenu() {
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
+        {/* {!isAuth && ( */}
         <NavigationMenuItem>
           <Link href="/" legacyBehavior passHref>
             <NavigationMenuLink
@@ -113,6 +116,7 @@ export default function NavMenu() {
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
+        {/* )} */}
       </NavigationMenuList>
     </NavigationMenu>
   );
@@ -128,13 +132,13 @@ const ListItem = React.forwardRef<
         <a
           ref={ref}
           className={cn(
-            "block select-none space-y-1 rounded-2xl p-3 leading-none no-underline outline-none transition-colors hover:bg-gray-900",
+            "block select-none space-y-1 rounded-2xl py-5 px-3 leading-none no-underline outline-none transition-colors hover:bg-gray-900 ",
             className
           )}
           {...props}
         >
-          <div className="text-sm font-medium leading-none">{title}</div>
-          <p className="text-sm leading-snug line-clamp-2 text-muted-foreground">
+          <div className="text-bases font-semibold leading-none">{title}</div>
+          <p className="text-sm leading-snug line-clamp-2 text-muted-foreground ">
             {children}
           </p>
         </a>

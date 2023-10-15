@@ -6,6 +6,8 @@ import localFont from "next/font/local";
 import Navbar from "@/components/Navbar";
 import Providers from "@/components/Providers";
 import { Poppins, Montserrat } from "next/font/google";
+import { ClerkProvider } from "@clerk/nextjs";
+import { dark } from "@clerk/themes";
 export const fontSans = FontSans({
   subsets: ["latin"],
   variable: "--font-sans",
@@ -36,25 +38,30 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body
-        className={cn(
-          "dark antialiased min-h-screen grainy font-sans font-inter bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-slate-900 via-black to-black",
-          fontSans.className,
-          fontSans.variable,
-          fontPoppins.className,
-          fontPoppins.variable,
-          fontMontserrat.className,
-          fontMontserrat.variable,
-          fontHeading.variable,
-          fontHeading.className
-        )}
+    <Providers>
+      <ClerkProvider
+        appearance={{
+          baseTheme: dark,
+        }}
       >
-        <Providers>
-          <Navbar />
-          {children}
-        </Providers>
-      </body>
-    </html>
+        <html lang="en">
+          <body
+            className={cn(
+              "dark antialiased min-h-screen grainy font-sans font-inter bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-slate-900 via-black to-black",
+              fontSans.className,
+              fontSans.variable,
+              fontPoppins.className,
+              fontPoppins.variable,
+              fontMontserrat.className,
+              fontMontserrat.variable,
+              fontHeading.variable,
+              fontHeading.className
+            )}
+          >
+            {children}
+          </body>
+        </html>
+      </ClerkProvider>
+    </Providers>
   );
 }
