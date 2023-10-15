@@ -25,13 +25,12 @@ export default function RootLayout({
       <html lang="en">
         <body
           className={cn(
-            "dark antialiased min-h-screen grainy font-sans bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-gray-800 via-black to-black ",
+            "dark antialiased min-h-screen grainy font-sans font-inter bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-gray-800 via-black to-black ",
             inter.className,
             fontHeading.variable,
             fontHeading.className
           )}
         >
-          <Navbar />
           {children}
         </body>
       </html>
