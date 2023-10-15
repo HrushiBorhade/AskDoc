@@ -1,11 +1,26 @@
 import { cn } from "@/lib/utils";
 import "./globals.css";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter as FontSans } from "next/font/google";
 import localFont from "next/font/local";
 import Navbar from "@/components/Navbar";
 import Providers from "@/components/Providers";
-const inter = Inter({ subsets: ["latin"] });
+import { Poppins, Montserrat } from "next/font/google";
+export const fontSans = FontSans({
+  subsets: ["latin"],
+  variable: "--font-sans",
+});
+export const fontPoppins = Poppins({
+  subsets: ["latin"],
+  variable: "--font-poppins",
+  weight: ["100", "200", "300", "400", "500", "600"],
+});
+export const fontMontserrat = Montserrat({
+  subsets: ["latin"],
+  variable: "--font-montserrat",
+  weight: ["100", "200", "300", "400", "500", "600"],
+});
+
 const fontHeading = localFont({
   src: "../../assets/fonts/CalSans-SemiBold.woff2",
   variable: "--font-heading",
@@ -21,19 +36,25 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <Providers>
-      <html lang="en">
-        <body
-          className={cn(
-            "dark antialiased min-h-screen grainy font-sans font-inter bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-gray-800 via-black to-black ",
-            inter.className,
-            fontHeading.variable,
-            fontHeading.className
-          )}
-        >
+    <html lang="en">
+      <body
+        className={cn(
+          "dark antialiased min-h-screen grainy font-sans font-inter bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-slate-900 via-black to-black",
+          fontSans.className,
+          fontSans.variable,
+          fontPoppins.className,
+          fontPoppins.variable,
+          fontMontserrat.className,
+          fontMontserrat.variable,
+          fontHeading.variable,
+          fontHeading.className
+        )}
+      >
+        <Providers>
+          <Navbar />
           {children}
-        </body>
-      </html>
-    </Providers>
+        </Providers>
+      </body>
+    </html>
   );
 }
