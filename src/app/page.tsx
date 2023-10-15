@@ -21,7 +21,7 @@ function HomePage({}: Props) {
               Chat with your
             </span>
             <br className="block md:hidden" />
-            <span className="ml-1 md:ml-4  tracking-tight font-heading clipped-text   ">
+            <span className=" ml-2 tracking-tight font-heading clipped-text   ">
               Documents .
             </span>
           </div>

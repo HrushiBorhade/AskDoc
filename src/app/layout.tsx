@@ -8,6 +8,8 @@ import Providers from "@/components/Providers";
 import { Poppins, Montserrat } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
 import { dark } from "@clerk/themes";
+
+import "react-loading-skeleton/dist/skeleton.css";
 export const fontSans = FontSans({
   subsets: ["latin"],
   variable: "--font-sans",

@@ -22,10 +22,12 @@
     "@trpc/server": "^10.40.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
+    "date-fns": "^2.30.0",
     "lucide-react": "^0.287.0",
     "next": "13.5.4",
     "react": "^18",
     "react-dom": "^18",
+    "react-loading-skeleton": "^3.3.1",
     "tailwind-merge": "^1.14.0",
     "tailwindcss-animate": "^1.0.7",
     "zod": "^3.22.4"

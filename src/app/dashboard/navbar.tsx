@@ -9,7 +9,7 @@ export default async function DashBoardNavbar(props: Props) {
   const { userId } = await auth();
   const isAuth = !!userId;
   return (
-    <div className="sticky font-sans h-20 inset-x-0 top-0 py-3 z-30 w-full  backdrop-blur-lg border-b border-gray-900 transition-all">
+    <div className="sticky font-sans h-16 inset-x-0 top-0  z-30 w-full  backdrop-blur-lg border-b border-gray-900 transition-all">
       <MaxWidthWrapper className="">
         <div className="flex h-14 md:px-10 items-center justify-between ">
           <Link
