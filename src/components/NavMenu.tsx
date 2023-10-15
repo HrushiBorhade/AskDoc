@@ -56,7 +56,7 @@ const components: { title: string; href: string; description: string }[] = [
 
 export default function NavMenu() {
   return (
-    <NavigationMenu className="rounded-full border p-1 border-slate-300 ">
+    <NavigationMenu className="rounded-full border border-slate-300 ">
       <NavigationMenuList>
         <NavigationMenuItem>
           <Link href="/" legacyBehavior passHref>
