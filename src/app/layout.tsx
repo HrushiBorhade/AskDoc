@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import localFont from "next/font/local";
 import Navbar from "@/components/Navbar";
+import Providers from "@/components/Providers";
 const inter = Inter({ subsets: ["latin"] });
 const fontHeading = localFont({
   src: "../../assets/fonts/CalSans-SemiBold.woff2",
@@ -20,18 +21,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body
-        className={cn(
-          "dark antialiased min-h-screen font-sans ",
-          inter.className,
-          fontHeading.variable,
-          fontHeading.className
-        )}
-      >
-        <Navbar />
-        {children}
-      </body>
-    </html>
+    <Providers>
+      <html lang="en">
+        <body
+          className={cn(
+            "dark antialiased min-h-screen grainy font-sans bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-gray-800 via-black to-black ",
+            inter.className,
+            fontHeading.variable,
+            fontHeading.className
+          )}
+        >
+          <Navbar />
+          {children}
+        </body>
+      </html>
+    </Providers>
   );
 }

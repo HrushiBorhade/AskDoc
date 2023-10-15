@@ -56,14 +56,14 @@ const components: { title: string; href: string; description: string }[] = [
 
 export default function NavMenu() {
   return (
-    <NavigationMenu className="rounded-full border-2 p-1  ">
+    <NavigationMenu className="rounded-full border p-1 border-slate-300 ">
       <NavigationMenuList>
         <NavigationMenuItem>
           <Link href="/" legacyBehavior passHref>
             <NavigationMenuLink
               className={cn(
                 navigationMenuTriggerStyle(),
-                "font-semibold text-primary-text hover:text-white "
+                "font-semibold text-primary-text hover:text-black hover:bg-white "
               )}
             >
               PRICING
@@ -71,7 +71,7 @@ export default function NavMenu() {
           </Link>
         </NavigationMenuItem>
         <NavigationMenuItem className="">
-          <NavigationMenuTrigger className="font-semibold text-primary-text hover:text-white ">
+          <NavigationMenuTrigger className="font-semibold text-primary-text  hover:text-black hover:bg-white ">
             FEATURES
           </NavigationMenuTrigger>
           <NavigationMenuContent className="">
@@ -93,7 +93,7 @@ export default function NavMenu() {
             <NavigationMenuLink
               className={cn(
                 navigationMenuTriggerStyle(),
-                "font-semibold text-primary-text hover:text-white "
+                "font-semibold text-primary-text hover:text-black hover:bg-white "
               )}
             >
               SIGN UP

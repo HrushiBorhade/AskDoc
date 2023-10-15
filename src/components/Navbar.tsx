@@ -5,6 +5,7 @@ import Link from "next/link";
 import { NavigationMenu } from "./ui/navigation-menu";
 import NavMenu from "./NavMenu";
 import { buttonVariants } from "./ui/button";
+import { UserButton } from "@clerk/nextjs";
 
 type Props = {};
 
@@ -20,7 +21,7 @@ const Navbar = (props: Props) => {
             <NavMenu />
           </div>
           <div>
-            <Link href="">
+            <Link href="/sign-in">
               <button
                 className={buttonVariants({
                   className: "font-semibold text-base rounded-full py-6",
