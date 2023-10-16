@@ -16,7 +16,7 @@ function HomePage({}: Props) {
           <div className=" mt-44 text-start leading-44 font-heading  text-5xl sm:text-7xl md:text-6xl lg:text-7xl animate-fade-in [--animation-delay:200ms] relative opacity-0 translaye-y-[10px]   ">
             {/* Engaging &<br /> Productive Document Experience */}
             <span className="text-shadow-white ">
-              Ask Questions
+              Ask Questions <span className="block md:hidden">,</span>
               <br />
               Chat with your
             </span>

@@ -55,7 +55,7 @@ const Dashboard = (props: Props) => {
                   new Date(b.createdAt).getTime() -
                   new Date(a.createdAt).getTime()
               )
-              .map((file) => (
+              .map((file, i) => (
                 <li
                   key={file.id}
                   className="col-span-1 border divide-y divide-gray-900 rounded-2xl  shadow transition hover:shadow-lg"
@@ -65,10 +65,16 @@ const Dashboard = (props: Props) => {
                     className="flex flex-col gap-2"
                   >
                     <div className="pt-6 px-6 flex w-full items-center justify-between space-x-6">
-                      <div className="h-10 w-10 flex-shrink-0 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500" />
+                      <div
+                        className={`h-8 w-8 flex-shrink-0 rounded-full ${
+                          i % 2 == 0
+                            ? "bg-gradient-to-r from-cyan-500 to-blue-500"
+                            : "bg-gradient-to-r from-pink-400 to-red-500"
+                        }`}
+                      />
                       <div className="flex-1 truncate">
                         <div className="flex items-center space-x-3">
-                          <h3 className="truncate text-lg font-poppins font-medium text-white">
+                          <h3 className="truncate text-lg tracking-tight font-poppins font-medium text-white">
                             {file.name}
                           </h3>
                         </div>
@@ -99,7 +105,7 @@ const Dashboard = (props: Props) => {
               ))}
           </ul>
         ) : isLoading ? (
-          <SkeletonTheme baseColor="#08080c" highlightColor="#111016">
+          <SkeletonTheme baseColor="#0a0a0e" highlightColor="#12101a">
             <Skeleton height={100} className="my-2 text-gray-900" count={4} />
           </SkeletonTheme>
         ) : (
