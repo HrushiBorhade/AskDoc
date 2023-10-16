@@ -2,7 +2,7 @@ import { auth, clerkClient } from "@clerk/nextjs";
 import { privateProcedure, publicProcedure, router } from "./trpc";
 import { TRPCError } from "@trpc/server";
 import { db } from "@/lib/db";
-
+import { z } from "zod";
 export const appRouter = router({
   authCallback: publicProcedure.query(async () => {
     const { userId } = auth();
@@ -33,6 +33,26 @@ export const appRouter = router({
       },
     });
   }),
+  deleteFile: privateProcedure
+    .input(z.object({ id: z.string() }))
+    .mutation(async ({ ctx, input }) => {
+      const { userId } = ctx;
+      const { id } = input;
+      const file = await db.file.findFirst({
+        where: {
+          id: id,
+          userId,
+        },
+      });
+      if (!file) throw new TRPCError({ code: "NOT_FOUND" });
+      if (file.userId !== userId) throw new TRPCError({ code: "UNAUTHORIZED" });
+      await db.file.delete({
+        where: {
+          id,
+        },
+      });
+      return { success: true };
+    }),
 });
 
 export type AppRouter = typeof appRouter;
