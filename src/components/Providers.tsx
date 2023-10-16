@@ -1,10 +1,10 @@
 "use client";
-import { ClerkProvider } from "@clerk/nextjs";
+
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import React, { PropsWithChildren, ReactNode, useState } from "react";
-import { dark } from "@clerk/themes";
-import { trpc } from "@/app/_trpc/client";
+
 import { httpBatchLink } from "@trpc/client";
+import { trpc } from "@/app/_trpc/client";
 type Props = {
   children: ReactNode;
 };
@@ -22,15 +22,7 @@ const Providers = ({ children }: Props) => {
   );
   return (
     <trpc.Provider client={trpcClient} queryClient={queryClient}>
-      <QueryClientProvider client={queryClient}>
-        <ClerkProvider
-          appearance={{
-            baseTheme: dark,
-          }}
-        >
-          {children}
-        </ClerkProvider>
-      </QueryClientProvider>
+      <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
     </trpc.Provider>
   );
 };

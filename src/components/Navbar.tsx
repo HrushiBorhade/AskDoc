@@ -20,7 +20,7 @@ export default async function Navbar(props: Props) {
             <span>AskDoc.</span>
           </Link>
           <div className="hidden md:block py-6 mt-2 ">
-            <NavMenu />
+            <NavMenu isAuth={isAuth} />
           </div>
           <div className="">
             <Link href="/sign-in">
