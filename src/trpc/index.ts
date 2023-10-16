@@ -53,6 +53,31 @@ export const appRouter = router({
       });
       return { success: true };
     }),
+  getFile: privateProcedure
+    .input(z.object({ key: z.string(), name: z.string() }))
+    .mutation(async ({ ctx, input }) => {
+      const { userId } = ctx;
+      const { key, name } = input;
+      const isFileExist = await db.file.findFirst({
+        where: {
+          key: key,
+        },
+      });
+
+      if (isFileExist) return;
+
+      const file = await db.file.create({
+        data: {
+          key: key,
+          name: name,
+          userId: userId,
+          url: `https://${process.env.NEXT_PUBLIC_S3_BUCKET_NAME}.s3.ap-south-1.amazonaws.com/${key}`,
+          uploadStatus: "PROCESSING",
+        },
+      });
+      if (!file) throw new TRPCError({ code: "NOT_FOUND" });
+      return file;
+    }),
 });
 
 export type AppRouter = typeof appRouter;

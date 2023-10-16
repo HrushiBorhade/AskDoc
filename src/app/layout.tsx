@@ -10,6 +10,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 import { dark } from "@clerk/themes";
 
 import "react-loading-skeleton/dist/skeleton.css";
+import { Toaster } from "@/components/ui/toaster";
 export const fontSans = FontSans({
   subsets: ["latin"],
   variable: "--font-sans",
@@ -61,6 +62,7 @@ export default function RootLayout({
             )}
           >
             {children}
+            <Toaster />
           </body>
         </html>
       </ClerkProvider>
