@@ -9,33 +9,40 @@ import Dropzone from "react-dropzone";
 import { Progress } from "./ui/progress";
 import { trpc } from "@/app/_trpc/client";
 import { uploadToS3 } from "@/lib/s3";
-import { toast } from "./ui/use-toast";
+import { toast, useToast } from "./ui/use-toast";
 import { db } from "@/lib/db";
+import { useUploadThing } from "@/lib/uploadthing";
 
 const UploadDropzone = () => {
   const router = useRouter();
-  const { mutate: createFile } = trpc.getFile.useMutation({
-    onSuccess: (file) => {
-      console.log(file);
-      redirect(`/dashboard/${file?.id}`);
-    },
-  });
 
   const [isUploading, setIsUploading] = useState<boolean>(false);
   const [uploadProgress, setUploadProgress] = useState<number>(0);
+  const { toast } = useToast();
+
+  const { startUpload } = useUploadThing("pdfUploader");
+
+  const { mutate: startPolling } = trpc.getFile.useMutation({
+    onSuccess: (file) => {
+      router.push(`/dashboard/${file.id}`);
+    },
+    retry: true,
+    retryDelay: 500,
+  });
+
   const startSimulatedProgress = () => {
     setUploadProgress(0);
 
     const interval = setInterval(() => {
-      setUploadProgress((prev) => {
-        if (prev >= 95) {
+      setUploadProgress((prevProgress) => {
+        if (prevProgress >= 95) {
           clearInterval(interval);
-          return prev;
+          return prevProgress;
         }
-
-        return prev + 5;
+        return prevProgress + 5;
       });
     }, 500);
+
     return interval;
   };
   return (
@@ -47,32 +54,21 @@ const UploadDropzone = () => {
         const progressInterval = startSimulatedProgress();
 
         // handle file uploading
-        // const res = await startUpload(acceptedFile);
+        const res = await startUpload(acceptedFile);
 
-        // if (!res) {
-        //   return toast({
-        //     title: "Something went wrong",
-        //     description: "Please try again later",
-        //     variant: "destructive",
-        //   });
-        // }
+        if (!res) {
+          return toast({
+            title: "Something went wrong",
+            description: "Please try again later",
+            variant: "destructive",
+          });
+        }
 
-        // const [fileResponse] = res;
+        const [fileResponse] = res;
 
-        // const key = fileResponse?.key;
+        const key = fileResponse?.key;
 
-        // if (!key) {
-        //   return toast({
-        //     title: "Something went wrong",
-        //     description: "Please try again later",
-        //     variant: "destructive",
-        //   });
-        // }
-
-        const file = await uploadToS3(acceptedFile[0]);
-        console.log(file);
-
-        if (!file) {
+        if (!key) {
           return toast({
             title: "Something went wrong",
             description: "Please try again later",
@@ -82,12 +78,14 @@ const UploadDropzone = () => {
 
         clearInterval(progressInterval);
         setUploadProgress(100);
+
+        startPolling({ key });
       }}
     >
       {({ getRootProps, getInputProps, acceptedFiles }) => (
         <div
           {...getRootProps()}
-          className="border-dashed  border border-zinc-800 rounded-2xl cursor-pointer bg-[#0e0e0e] py-12 flex justify-center items-center flex-col"
+          className="border border-dashed border-gray-900 rounded-2xl cursor-pointer m-2  py-12 flex justify-center items-center flex-col"
         >
           <div className="flex items-center justify-center h-full w-full">
             <label
@@ -95,10 +93,9 @@ const UploadDropzone = () => {
               className="flex flex-col items-center justify-center w-full h-full rounded-lg cursor-pointer"
             >
               <div className="flex flex-col items-center justify-center pt-5 pb-6">
-                <Inbox className="w-8 h-8 mb-4  text-blue-500 block" />
-                <p className="mb-2 text-sm text-slate-300">
-                  <span className="font-semibold">Click to Upload</span> or Drag
-                  n Drop
+                <Inbox className="w-8 h-8 mb-2  text-blue-600 block" />
+                <p className="mb-2 mr-5 text-sm text-slate-300">
+                  Drop your PDF Document Here
                 </p>
                 <p className="text-xs text-zinc-500">
                   {/* PDF (up to {isSubscribed ? "16" : "4"}MB) */}
@@ -119,18 +116,20 @@ const UploadDropzone = () => {
               {isUploading ? (
                 <div className="w-full mt-4 max-w-xs mx-auto">
                   <Progress
+                    indicatorColor={
+                      uploadProgress === 100 ? "bg-green-500" : ""
+                    }
                     value={uploadProgress}
-                    className="h-1 w-full bg-zinc-900"
+                    className="h-1 w-full bg-zinc-500"
                   />
                   {uploadProgress === 100 ? (
-                    <div className="flex gap-1 mt-2 items-center justify-center text-sm text-slate-300 text-center pt-2">
+                    <div className="flex gap-1 items-center justify-center text-sm text-zinc-300 text-center pt-2">
                       <Loader2 className="h-3 w-3 animate-spin" />
                       Redirecting...
                     </div>
                   ) : null}
                 </div>
               ) : null}
-
               <input
                 {...getInputProps()}
                 type="file"
