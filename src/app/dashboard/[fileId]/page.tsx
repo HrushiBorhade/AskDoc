@@ -1,5 +1,4 @@
 import ChatWrapper from "@/components/chat/ChatWrapper";
-import PdfFullscreen from "@/components/PdfFullscreen";
 import PdfRenderer from "@/components/PdfRenderer";
 import { db } from "@/lib/db";
 
@@ -8,27 +7,28 @@ import { notFound, redirect } from "next/navigation";
 
 interface PageProps {
   params: {
-    fileid: string;
+    fileId: string;
   };
 }
 
 const Page = async ({ params }: PageProps) => {
-  const { fileid } = params;
+  const { fileId } = params;
+  console.log(fileId);
 
   const { getUser } = getKindeServerSession();
   const user = getUser();
 
-  if (!user || !user.id) redirect(`/auth-callback?origin=dashboard/${fileid}`);
+  if (!user || !user.id) redirect(`/auth-callback?origin=dashboard/${fileId}`);
 
   const file = await db.file.findFirst({
     where: {
-      id: fileid,
+      id: fileId,
       userId: user.id,
     },
   });
 
   if (!file) notFound();
-  console.log(file.url);
+
   return (
     <div className="flex-1 font-sans justify-between flex flex-col h-[calc(100vh-4rem)]">
       <div className="mx-auto w-full max-w-8xl grow lg:flex xl:px-2">
@@ -41,7 +41,7 @@ const Page = async ({ params }: PageProps) => {
         </div>
 
         <div className="shrink-0 flex-[0.75]  lg:w-96 ">
-          <ChatWrapper fileId={file.id} />
+          <ChatWrapper fileId={file.id} isSubscribed={true} />
         </div>
       </div>
     </div>

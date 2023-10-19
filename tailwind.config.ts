@@ -63,6 +63,7 @@ module.exports = {
         poppins: ["var(--font-poppins)", ...fontFamily.sans],
         montserrat: ["var(--font-montserrat)", ...fontFamily.sans],
         lato: ["var(--font-lato)", ...fontFamily.sans],
+        open: ["var(--font-open_sans)", ...fontFamily.sans],
       },
       keyframes: {
         "accordion-down": {

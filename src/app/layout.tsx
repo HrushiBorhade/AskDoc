@@ -5,7 +5,7 @@ import { Inter as FontSans } from "next/font/google";
 import localFont from "next/font/local";
 import Navbar from "@/components/Navbar";
 import Providers from "@/components/Providers";
-import { Poppins, Montserrat, Lato } from "next/font/google";
+import { Poppins, Montserrat, Lato, Open_Sans } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
 import { dark } from "@clerk/themes";
 
@@ -30,6 +30,11 @@ export const fontLato = Lato({
   subsets: ["latin"],
   variable: "--font-montserrat",
   weight: ["100", "300", "400", "700", "900"],
+});
+export const fontOpen = Open_Sans({
+  subsets: ["latin"],
+  variable: "--font-montserrat",
+  weight: ["300", "400", "500", "600", "700", "800"],
 });
 
 const fontHeading = localFont({
@@ -60,6 +65,8 @@ export default function RootLayout({
             fontMontserrat.variable,
             fontLato.className,
             fontLato.variable,
+            fontOpen.className,
+            fontOpen.variable,
             fontHeading.variable,
             fontHeading.className
           )}
