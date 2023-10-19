@@ -5,11 +5,13 @@ import { Inter as FontSans } from "next/font/google";
 import localFont from "next/font/local";
 import Navbar from "@/components/Navbar";
 import Providers from "@/components/Providers";
-import { Poppins, Montserrat } from "next/font/google";
+import { Poppins, Montserrat, Lato } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
 import { dark } from "@clerk/themes";
 
 import "react-loading-skeleton/dist/skeleton.css";
+import "simplebar-react/dist/simplebar.min.css";
+import { Toaster } from "@/components/ui/toaster";
 export const fontSans = FontSans({
   subsets: ["latin"],
   variable: "--font-sans",
@@ -23,6 +25,11 @@ export const fontMontserrat = Montserrat({
   subsets: ["latin"],
   variable: "--font-montserrat",
   weight: ["100", "200", "300", "400", "500", "600"],
+});
+export const fontLato = Lato({
+  subsets: ["latin"],
+  variable: "--font-montserrat",
+  weight: ["100", "300", "400", "700", "900"],
 });
 
 const fontHeading = localFont({
@@ -41,29 +48,26 @@ export default function RootLayout({
 }) {
   return (
     <Providers>
-      <ClerkProvider
-        appearance={{
-          baseTheme: dark,
-        }}
-      >
-        <html lang="en">
-          <body
-            className={cn(
-              "dark antialiased min-h-screen grainy font-sans font-inter bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-slate-900 via-black to-black",
-              fontSans.className,
-              fontSans.variable,
-              fontPoppins.className,
-              fontPoppins.variable,
-              fontMontserrat.className,
-              fontMontserrat.variable,
-              fontHeading.variable,
-              fontHeading.className
-            )}
-          >
-            {children}
-          </body>
-        </html>
-      </ClerkProvider>
+      <html lang="en">
+        <body
+          className={cn(
+            "dark antialiased min-h-screen bg-black font-sans font-inter ",
+            fontSans.className,
+            fontSans.variable,
+            fontPoppins.className,
+            fontPoppins.variable,
+            fontMontserrat.className,
+            fontMontserrat.variable,
+            fontLato.className,
+            fontLato.variable,
+            fontHeading.variable,
+            fontHeading.className
+          )}
+        >
+          {children}
+          <Toaster />
+        </body>
+      </html>
     </Providers>
   );
 }

@@ -5,34 +5,35 @@ import { NavigationMenu } from "./ui/navigation-menu";
 import NavMenu from "./NavMenu";
 import { buttonVariants } from "./ui/button";
 import { UserButton, auth } from "@clerk/nextjs";
-import { UserCircle2 } from "lucide-react";
+import { ArrowRight, UserCircle2 } from "lucide-react";
+import { LoginLink, RegisterLink } from "@kinde-oss/kinde-auth-nextjs/server";
+import { cn } from "@/lib/utils";
 
 type Props = {};
 
 export default async function Navbar(props: Props) {
-  const { userId } = await auth();
-  const isAuth = !!userId;
   return (
-    <div className="sticky font-sans h-20 inset-x-0 top-0 py-3 z-30 w-full  backdrop-blur-lg transition-all">
+    <div className="container  mt-4 w-full">
       <MaxWidthWrapper className="">
-        <div className="flex h-14 container items-center justify-between ">
+        <div className="flex h-14 px-2 items-center justify-between ">
           <Link href="/" className="flex z-40 font-heading font-bold text-3xl">
             <span>AskDoc.</span>
           </Link>
-          <div className="hidden md:block py-6 mt-2 ">
-            <NavMenu isAuth={isAuth} />
+          <div className="hidden md:block py-6 mt-2 mr-5 ">
+            <NavMenu isAuth={true} />
           </div>
           <div className="">
-            <Link href="/sign-in">
-              <button
-                className={buttonVariants({
-                  className: "font-semibold text-base rounded-full py-5",
+            <LoginLink
+              className={cn(
+                buttonVariants({
+                  variant: "default",
                   size: "lg",
-                })}
-              >
-                LOGIN
-              </button>
-            </Link>
+                }),
+                "font-semibold text-sm"
+              )}
+            >
+              LOGIN
+            </LoginLink>
           </div>
         </div>
       </MaxWidthWrapper>

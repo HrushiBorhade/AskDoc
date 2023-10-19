@@ -62,6 +62,7 @@ module.exports = {
         heading: ["var(--font-heading)", ...fontFamily.sans],
         poppins: ["var(--font-poppins)", ...fontFamily.sans],
         montserrat: ["var(--font-montserrat)", ...fontFamily.sans],
+        lato: ["var(--font-lato)", ...fontFamily.sans],
       },
       keyframes: {
         "accordion-down": {

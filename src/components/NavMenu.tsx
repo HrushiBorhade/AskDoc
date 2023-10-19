@@ -58,24 +58,24 @@ type Prop = {
 };
 export default function NavMenu({ isAuth }: Prop) {
   return (
-    <NavigationMenu className="rounded-full border border-slate-300 p-1">
+    <NavigationMenu className="rounded-full border border-[subtext-gradient] p-1">
       <NavigationMenuList>
         <NavigationMenuItem>
           <Link href="/" legacyBehavior passHref>
             <NavigationMenuLink
               className={cn(
                 navigationMenuTriggerStyle(),
-                "font-semibold text-primary-text hover:text-black hover:bg-white "
+                "font-medium font-lato tracking-tight text-gray-300 hover:text-black hover:bg-gray-200 "
               )}
             >
-              PRICING
+              Pricing
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
 
         <NavigationMenuItem className="">
-          <NavigationMenuTrigger className="font-semibold text-primary-text  hover:text-black hover:bg-white ">
-            FEATURES
+          <NavigationMenuTrigger className="font-medium font-lato tracking-tight text-gray-300 hover:text-black hover:bg-gray-200 ">
+            Features
           </NavigationMenuTrigger>
           <NavigationMenuContent className="">
             <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-1 lg:w-[490px] ">
@@ -96,15 +96,15 @@ export default function NavMenu({ isAuth }: Prop) {
             <NavigationMenuLink
               className={cn(
                 navigationMenuTriggerStyle(),
-                "font-semibold text-primary-text hover:text-black hover:bg-white "
+                "font-medium font-lato tracking-tight text-gray-300 hover:text-black hover:bg-gray-200 "
               )}
             >
-              DASHBOARD
+              Dashboard
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
         {/* {!isAuth && ( */}
-        <NavigationMenuItem>
+        {/* <NavigationMenuItem>
           <Link href="/" legacyBehavior passHref>
             <NavigationMenuLink
               className={cn(
@@ -115,7 +115,7 @@ export default function NavMenu({ isAuth }: Prop) {
               SIGN UP
             </NavigationMenuLink>
           </Link>
-        </NavigationMenuItem>
+        </NavigationMenuItem> */}
         {/* )} */}
       </NavigationMenuList>
     </NavigationMenu>

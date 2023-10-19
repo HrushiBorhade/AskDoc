@@ -1,15 +1,20 @@
-import { auth, clerkClient } from "@clerk/nextjs";
+import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { TRPCError, initTRPC } from "@trpc/server";
 
 const t = initTRPC.create();
 const middleware = t.middleware;
+
 const isAuth = middleware(async (opts) => {
-  const { userId } = await auth();
-  const user = userId ? await clerkClient.users.getUser(userId) : null;
-  if (!userId) throw new TRPCError({ code: "UNAUTHORIZED" });
+  const { getUser } = getKindeServerSession();
+  const user = getUser();
+
+  if (!user || !user.id) {
+    throw new TRPCError({ code: "UNAUTHORIZED" });
+  }
+
   return opts.next({
     ctx: {
-      userId,
+      userId: user.id,
       user,
     },
   });

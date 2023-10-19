@@ -21,24 +21,27 @@ import { format } from "date-fns";
 type Props = {};
 
 const Dashboard = (props: Props) => {
-  const [currentlyDeletingFile, setCurretlyDeletingFile] = useState<
+  const [currentlyDeletingFile, setCurrentlyDeletingFile] = useState<
     string | null
-  >();
+  >(null);
+
   const utils = trpc.useContext();
+
   const { data: files, isLoading } = trpc.getUserFiles.useQuery();
+
   const { mutate: deleteFile } = trpc.deleteFile.useMutation({
     onSuccess: () => {
       utils.getUserFiles.invalidate();
     },
     onMutate({ id }) {
-      setCurretlyDeletingFile(id);
+      setCurrentlyDeletingFile(id);
     },
     onSettled() {
-      setCurretlyDeletingFile(null);
+      setCurrentlyDeletingFile(null);
     },
   });
   return (
-    <main className="mx-auto font-sans max-w-7xl md:p-10">
+    <main className="mx-auto bg-black font-sans max-w-7xl md:p-10">
       <MaxWidthWrapper>
         <div className="mt-4 flex  items-center justify-between gap-4 border-b border-gray-700 pb-4 md:pb-5 ">
           <h1 className="mb-3 font-heading font-bold  text-4xl md:text-5xl  text-white">
@@ -48,7 +51,7 @@ const Dashboard = (props: Props) => {
           <UploadButton />
         </div>
         {files && files?.length !== 0 ? (
-          <ul className="mt-8 grid grid-cols-1 gap-6 divide-y divide-zinc-200 md:grid-cols-2 lg:grid-cols-3">
+          <ul className="mt-8 grid grid-cols-1 gap-6  md:grid-cols-2 lg:grid-cols-3">
             {files
               .sort(
                 (a, b) =>
