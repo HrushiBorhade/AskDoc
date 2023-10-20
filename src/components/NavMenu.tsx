@@ -58,14 +58,14 @@ type Prop = {
 };
 export default function NavMenu({ isAuth }: Prop) {
   return (
-    <NavigationMenu className="rounded-full border border-[subtext-gradient] p-1">
+    <NavigationMenu className="navmenu-styles py-[2px]">
       <NavigationMenuList>
         <NavigationMenuItem>
           <Link href="/" legacyBehavior passHref>
             <NavigationMenuLink
               className={cn(
                 navigationMenuTriggerStyle(),
-                "font-medium font-lato tracking-tight text-gray-300 hover:text-black hover:bg-gray-200 "
+                "font-medium font-sans tracking-tight text-gray-300  hover:bg-[#121212]"
               )}
             >
               Pricing
@@ -74,7 +74,7 @@ export default function NavMenu({ isAuth }: Prop) {
         </NavigationMenuItem>
 
         <NavigationMenuItem className="">
-          <NavigationMenuTrigger className="font-medium font-lato tracking-tight text-gray-300 hover:text-black hover:bg-gray-200 ">
+          <NavigationMenuTrigger className="font-medium font-sans tracking-tight text-gray-300  hover:bg-[#121212]">
             Features
           </NavigationMenuTrigger>
           <NavigationMenuContent className="">
@@ -96,7 +96,7 @@ export default function NavMenu({ isAuth }: Prop) {
             <NavigationMenuLink
               className={cn(
                 navigationMenuTriggerStyle(),
-                "font-medium font-lato tracking-tight text-gray-300 hover:text-black hover:bg-gray-200 "
+                "font-medium  font-sans tracking-tight text-gray-300  hover:bg-[#121212] "
               )}
             >
               Dashboard

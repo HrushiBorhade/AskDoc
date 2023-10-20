@@ -60,10 +60,10 @@ module.exports = {
       fontFamily: {
         sans: ["var(--font-sans)", ...fontFamily.sans],
         heading: ["var(--font-heading)", ...fontFamily.sans],
+        syne: ["var(--font-syne)", ...fontFamily.sans],
         poppins: ["var(--font-poppins)", ...fontFamily.sans],
         montserrat: ["var(--font-montserrat)", ...fontFamily.sans],
         lato: ["var(--font-lato)", ...fontFamily.sans],
-        open: ["var(--font-open_sans)", ...fontFamily.sans],
       },
       keyframes: {
         "accordion-down": {
