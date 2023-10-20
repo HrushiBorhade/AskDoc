@@ -13,7 +13,6 @@ interface PageProps {
 
 const Page = async ({ params }: PageProps) => {
   const { fileId } = params;
-  console.log(fileId);
 
   const { getUser } = getKindeServerSession();
   const user = getUser();
@@ -30,7 +29,7 @@ const Page = async ({ params }: PageProps) => {
   if (!file) notFound();
 
   return (
-    <div className="flex-1 font-sans justify-between flex flex-col h-[calc(100vh-4rem)]">
+    <div className="flex-1 mt-4 font-sans justify-between flex flex-col h-[calc(100vh-5rem)]">
       <div className="mx-auto w-full max-w-8xl grow lg:flex xl:px-2">
         <div className="flex-1 xl:flex">
           <div className="px-4 py-6 sm:px-6 lg:pl-8 xl:flex-1 xl:pl-6 ">
@@ -40,7 +39,7 @@ const Page = async ({ params }: PageProps) => {
           </div>
         </div>
 
-        <div className="shrink-0 flex-[0.75]  lg:w-96 ">
+        <div className="shrink-0 flex-[0.70]  lg:w-96 ">
           <ChatWrapper fileId={file.id} isSubscribed={true} />
         </div>
       </div>

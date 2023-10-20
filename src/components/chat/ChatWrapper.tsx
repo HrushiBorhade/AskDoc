@@ -6,6 +6,7 @@ import Messages from "./Messages";
 import { ChevronLeft, Loader2, XCircle } from "lucide-react";
 import Link from "next/link";
 import { buttonVariants } from "../ui/button";
+import { ChatContextProvider } from "./ChatContext";
 // import { ChatContextProvider } from './ChatContext'
 
 interface ChatWrapperProps {
@@ -94,14 +95,14 @@ const ChatWrapper = ({ fileId, isSubscribed }: ChatWrapperProps) => {
     );
 
   return (
-    // <ChatContextProvider fileId={fileId}>
-    <div className="relative min-h-[calc(80vh)] md:min-h-[calc(100vh-7.25rem)] border-2  bg-black py-0  md:py-4 md:my-5  mx-4 md:mr-3 rounded-2xl flex flex-col justify-between gap-2">
-      <div className="flex-1 justify-between flex flex-col mb-28">
-        <Messages fileId={fileId} />
-        <ChatInput />
+    <ChatContextProvider fileId={fileId}>
+      <div className="relative min-h-[calc(75vh)] md:min-h-[calc(100vh-7.25rem)] border-2  bg-black py-4 mb-4  md:py-4  md:my-5 mx-4 md:mr-3 rounded-2xl flex flex-col justify-between gap-2">
+        <div className="flex-1 justify-between flex flex-col mb-14">
+          <Messages fileId={fileId} />
+          <ChatInput />
+        </div>
       </div>
-    </div>
-    // </ChatContextProvider>
+    </ChatContextProvider>
   );
 };
 

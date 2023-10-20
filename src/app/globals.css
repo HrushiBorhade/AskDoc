@@ -117,6 +117,12 @@
   background-repeat: no-repeat;
   background-size: cover;
 }
+.grainy3 {
+  background-image: url(../../public/bg-img2.webp);
+  rotate: "180deg";
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 .heading-gradient-purple {
   -webkit-text-fill-color: transparent;
   background-image: linear-gradient(
@@ -168,13 +174,23 @@
   backdrop-filter: blur(5px);
   background-image: radial-gradient(
     circle,
-    rgba(255, 255, 255, 0.15),
-    rgba(255, 255, 255, 0.03)
+    rgba(255, 255, 255, 0.13),
+    rgba(255, 255, 255, 0.02)
   );
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 40px;
 }
-
+.gradient-button {
+  opacity: 1;
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  background-image: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.13),
+    rgba(255, 255, 255, 0.02)
+  );
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
 .logo-gradient {
   background-image: linear-gradient(
     90deg,
@@ -182,5 +198,27 @@
     transparent 50%,
     transparent 50%,
     #000210 96%
+  );
+}
+.upload-styles {
+  opacity: 1;
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  background-image: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.005)
+  );
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  margin-right: 10px;
+  margin-left: 10px;
+}
+.product {
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  background-image: radial-gradient(
+    circle,
+    rgba(64, 7, 105, 0.43),
+    rgba(0, 0, 0, 0.5)
   );
 }

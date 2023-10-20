@@ -8,6 +8,7 @@ import { PineconeStore } from "langchain/vectorstores/pinecone";
 import { NextRequest } from "next/server";
 import OpenAI from "openai";
 import { OpenAIStream, StreamingTextResponse } from "ai";
+
 export const POST = async (req: NextRequest) => {
   const body = await req.json();
   const { getUser } = getKindeServerSession();
@@ -48,7 +49,7 @@ export const POST = async (req: NextRequest) => {
     namespace: file.id,
   });
 
-  const results = await vectorStore.similaritySearch(message, 4);
+  const results = await vectorStore.similaritySearch(message, 3);
 
   const prevMessages = await db.message.findMany({
     where: {

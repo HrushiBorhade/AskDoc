@@ -6,12 +6,20 @@ import NavMenu from "./NavMenu";
 import { buttonVariants } from "./ui/button";
 
 import { ArrowRight, UserCircle2 } from "lucide-react";
-import { LoginLink, RegisterLink } from "@kinde-oss/kinde-auth-nextjs/server";
+import {
+  LoginLink,
+  RegisterLink,
+  getKindeServerSession,
+} from "@kinde-oss/kinde-auth-nextjs/server";
 import { cn } from "@/lib/utils";
 
 type Props = {};
 
 export default async function Navbar(props: Props) {
+  const { getUser } = getKindeServerSession();
+  const user = getUser();
+  const isAuth = user!!;
+
   return (
     <div className="flex container sticky h-14 inset-x-0  transition-all top-4 z-30 w-full px-2 items-center justify-between ">
       <Link href="/" className="flex z-40 font-heading  font-bold text-2xl">

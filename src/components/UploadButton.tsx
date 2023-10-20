@@ -85,7 +85,7 @@ const UploadDropzone = () => {
       {({ getRootProps, getInputProps, acceptedFiles }) => (
         <div
           {...getRootProps()}
-          className="border border-dashed border-gray-900 rounded-2xl cursor-pointer m-2  py-12 flex justify-center items-center flex-col"
+          className="upload-styles rounded-2xl cursor-pointer m-2  py-12 flex justify-center items-center flex-col"
         >
           <div className="flex items-center justify-center h-full w-full">
             <label
@@ -93,8 +93,8 @@ const UploadDropzone = () => {
               className="flex flex-col items-center justify-center w-full h-full rounded-lg cursor-pointer"
             >
               <div className="flex flex-col items-center justify-center pt-5 pb-6">
-                <Inbox className="w-8 h-8 mb-2  text-blue-600 block" />
-                <p className="mb-2 mr-5 text-sm text-slate-300">
+                <Upload className="w-6 h-6 mb-3  text-slate-300 block" />
+                <p className="mb-2 text-gradient font-poppins text-base text-slate-300">
                   Drop your PDF Document Here
                 </p>
                 <p className="text-xs text-zinc-500">
@@ -160,11 +160,12 @@ const UploadButton = ({}: {}) => {
           className={cn(
             buttonVariants({
               variant: "default",
+              size: "md",
             }),
-            "rounded-full px-4 py-[22px] md:py-6 md:px-6 font-semibold"
+            "rounded-full px-4 py-5 md:py-6 font-semibold text-xs"
           )}
         >
-          <Upload className="h-4 w-4 mr-2 font-bold" />
+          <Upload className="h-4 w-4 mr-2 " />
           UPLOAD PDF
         </Button>
       </DialogTrigger>

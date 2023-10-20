@@ -31,7 +31,7 @@ const PdfFullscreen = ({ fileUrl }: PdfFullscreenProps) => {
       <DialogTrigger onClick={() => setIsOpen(true)} asChild>
         <Button
           variant="ghost"
-          className="gap-1.5 border rounded-xl md:border-none ml-3 md:ml-0"
+          className="gap-1.5 border gradient-button rounded-xl md:border-none ml-3 md:ml-0"
           aria-label="fullscreen"
         >
           <Expand className="hidden md:block h-4 w-4" />

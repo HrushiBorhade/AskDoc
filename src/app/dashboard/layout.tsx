@@ -4,7 +4,7 @@ import DashBoardNavbar from "./navbar";
 const layout = ({ children }: PropsWithChildren) => {
   return (
     <div>
-      <DashBoardNavbar />
+      {/* <DashBoardNavbar /> */}
       {children}
     </div>
   );

@@ -3,6 +3,7 @@ import { Button } from "../ui/button";
 import { Textarea } from "../ui/textarea";
 import Image from "next/image";
 import { useContext, useRef } from "react";
+import { ChatContext } from "./ChatContext";
 // import { ChatContext } from "./ChatContext";
 
 interface ChatInputProps {
@@ -10,13 +11,13 @@ interface ChatInputProps {
 }
 
 const ChatInput = ({ isDisabled }: ChatInputProps) => {
-  // const { addMessage, handleInputChange, isLoading, message } =
-  //   useContext(ChatContext);
+  const { addMessage, handleInputChange, isLoading, message } =
+    useContext(ChatContext);
 
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   return (
-    <div className="absolute  bottom-2 left-0 w-full">
+    <div className="absolute  bottom-4 left-2.5 w-[96%]">
       <div className=" flex items-center justify-center w-full overflow-hidden outline-none bg-zinc-900  rounded-3xl">
         <div className="flex w-screen  px-2">
           <Textarea
@@ -24,24 +25,26 @@ const ChatInput = ({ isDisabled }: ChatInputProps) => {
             ref={textareaRef}
             maxRows={4}
             autoFocus
-            onChange={() => {}}
-            value={""}
+            onChange={handleInputChange}
+            value={message}
             onKeyDown={(e) => {
               if (e.key === "Enter" && !e.shiftKey) {
                 e.preventDefault();
+                addMessage();
 
                 textareaRef.current?.focus();
               }
             }}
-            placeholder="Enter your question..."
+            placeholder="Write a message..."
             className="block w-full p-2 text-xs leading-snug tracking-tight text-justify bg-transparent border-none outline-none resize-none md:text-sm scrollText peer disabled:opacity-50 pr-14 focus:border-none sm:leading-6 py-3"
           />
 
           <button
-            disabled={isDisabled}
+            disabled={isLoading || isDisabled}
             className=""
             aria-label="send message"
             onClick={() => {
+              addMessage();
               textareaRef.current?.focus();
             }}
           >

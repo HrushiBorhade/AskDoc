@@ -61,14 +61,14 @@ export default function NavMenu({ isAuth }: Prop) {
     <NavigationMenu className="navmenu-styles py-[2px]">
       <NavigationMenuList>
         <NavigationMenuItem>
-          <Link href="/" legacyBehavior passHref>
+          <Link href="/#product" legacyBehavior passHref>
             <NavigationMenuLink
               className={cn(
                 navigationMenuTriggerStyle(),
                 "font-medium font-sans tracking-tight text-gray-300  hover:bg-[#121212]"
               )}
             >
-              Pricing
+              Product
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
@@ -92,14 +92,14 @@ export default function NavMenu({ isAuth }: Prop) {
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link href="/dashboard" legacyBehavior passHref>
+          <Link href="/" legacyBehavior passHref>
             <NavigationMenuLink
               className={cn(
                 navigationMenuTriggerStyle(),
-                "font-medium  font-sans tracking-tight text-gray-300  hover:bg-[#121212] "
+                "font-medium font-sans tracking-tight text-gray-300  hover:bg-[#121212]"
               )}
             >
-              Dashboard
+              Pricing
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
