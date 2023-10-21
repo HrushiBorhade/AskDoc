@@ -1,5 +1,4 @@
 "use client";
-import { Card } from "@/components/Card";
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 
 import { buttonVariants } from "@/components/ui/button";
