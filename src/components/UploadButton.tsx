@@ -8,7 +8,6 @@ import { redirect, useRouter } from "next/navigation";
 import Dropzone from "react-dropzone";
 import { Progress } from "./ui/progress";
 import { trpc } from "@/app/_trpc/client";
-import { uploadToS3 } from "@/lib/s3";
 import { toast, useToast } from "./ui/use-toast";
 import { db } from "@/lib/db";
 import { useUploadThing } from "@/lib/uploadthing";
