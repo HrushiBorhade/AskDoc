@@ -16,7 +16,7 @@ export function constructMetadata({
   title = "AskDoc",
   description = "Ask Questions and Chat with your Documents.",
   image = "/thumbnail.png",
-  icons = "/favicon.ico",
+  icons = "/favicon1.ico",
   noIndex = false,
 }: {
   title?: string;
