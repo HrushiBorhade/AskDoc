@@ -15,7 +15,7 @@ export function absoluteUrl(path: string) {
 export function constructMetadata({
   title = "AskDoc",
   description = "Ask Questions and Chat with your Documents.",
-  image = "/thumbnail2.png",
+  image = "/thumbnail.png",
   icons = "/favicon.ico",
   noIndex = false,
 }: {
