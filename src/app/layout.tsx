@@ -49,6 +49,9 @@ export default function RootLayout({
   return (
     <Providers>
       <html lang="en">
+        <head>
+          <link rel="icon" href="/favicon.ico" sizes="any" />
+        </head>
         <body
           className={cn(
             "dark antialiased min-h-screen bg-black font-sans font-inter ",
