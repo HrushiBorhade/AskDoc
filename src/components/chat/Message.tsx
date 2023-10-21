@@ -20,7 +20,7 @@ const Message = forwardRef<HTMLDivElement, MessageProps>(
       >
         <div
           className={cn(
-            "relative flex h-8 w-8 aspect-square items-center justify-center",
+            "relative flex mb-6 h-8 w-8 aspect-square  items-center justify-center",
             {
               "order-2": message.isUserMessage,
               "order-1  rounded-full": !message.isUserMessage,
@@ -61,17 +61,17 @@ const Message = forwardRef<HTMLDivElement, MessageProps>(
             ) : (
               message.text
             )}
-            {message.id !== "loading-message" ? (
-              <div
-                className={cn("text-xs select-none mt-2 w-full text-right", {
-                  "text-zinc-500": !message.isUserMessage,
-                  "text-blue-300": message.isUserMessage,
-                })}
-              >
-                {format(new Date(message.createdAt), "HH:mm")}
-              </div>
-            ) : null}
           </div>
+          {message.id !== "loading-message" ? (
+            <div
+              className={cn("text-xs select-none mt-2 w-full text-right ", {
+                "text-gray-500 -ml-2": !message.isUserMessage,
+                "text-gray-500 mr-2": message.isUserMessage,
+              })}
+            >
+              {format(new Date(message.createdAt), "HH:mm")}
+            </div>
+          ) : null}
         </div>
       </div>
     );

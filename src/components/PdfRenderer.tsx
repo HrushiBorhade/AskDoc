@@ -81,7 +81,7 @@ const PdfRenderer = ({ url }: PdfRendererProps) => {
 
   return (
     <div>
-      <div className="block md:hidden ">
+      <div className="block md:hidden">
         <PdfFullscreen fileUrl={url} />
       </div>
       <div className="hidden w-full bg-white py-4 text-black rounded-2xl shadow md:flex flex-col items-center">

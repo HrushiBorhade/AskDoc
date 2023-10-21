@@ -6,12 +6,28 @@ import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import signup from "../../public/document.svg";
 import Product from "@/components/Product";
+import Pricing from "@/components/Pricing";
+
 type Props = {};
 
 function HomePage({}: Props) {
+  const [user, setUser] = useState<any>();
+  const [isAuth, setIsAuth] = useState(null);
+
+  useEffect(() => {
+    const getKindeSession = async () => {
+      const res = await fetch("/api/kindeSession");
+      const data = await res.json();
+      setUser(data.user);
+      setIsAuth(data.authenticated);
+    };
+
+    getKindeSession();
+  }, []);
+
   useEffect(() => {
     (async () => {
       // @ts-ignore
@@ -19,7 +35,6 @@ function HomePage({}: Props) {
       const locomotiveScroll = new LocomotiveScroll();
     })();
   }, []);
-
   return (
     <div
       className="font-sans  "
@@ -45,17 +60,19 @@ function HomePage({}: Props) {
           </p>
           <div className="w-[360px] h-[230px] bg-white text-black md:w-[850px] mt-20 md:mt-10 rounded-2xl md:rounded-3xl md:h-[425px] flex items-center justify-center">
             Product Demo Video
+            <br /> (Placeholder)
           </div>
         </MaxWidthWrapper>
       </div>
 
-      <div className="relative flex flex-col  grainy2 min-h-screen">
+      <div className="relative flex flex-col  grainy2 min-h-[150vh] md:min-h-[120vh]">
         <h1 className="heading-gradient-purple md:text-6xl text-3xl mt-20 text-center font-syne heading-styles">
           Engaging & Productive
           <br /> Document Experience
         </h1>
         <Product />
       </div>
+      <Pricing isAuth={isAuth} />
     </div>
   );
 }

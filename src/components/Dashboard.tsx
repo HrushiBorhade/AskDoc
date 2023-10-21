@@ -18,9 +18,12 @@ import Link from "next/link";
 import { Button, buttonVariants } from "./ui/button";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import { format } from "date-fns";
-type Props = {};
+import { getUserSubscriptionPlan } from "@/lib/stripe";
+interface PageProps {
+  subscriptionPlan: Awaited<ReturnType<typeof getUserSubscriptionPlan>>;
+}
 
-const Dashboard = (props: Props) => {
+const Dashboard = ({ subscriptionPlan }: PageProps) => {
   const [currentlyDeletingFile, setCurrentlyDeletingFile] = useState<
     string | null
   >(null);
@@ -43,12 +46,12 @@ const Dashboard = (props: Props) => {
   return (
     <main className="mx-auto bg-black font-sans max-w-7xl md:p-10">
       <MaxWidthWrapper>
-        <div className="mt-4 flex  items-center justify-between gap-4 border-b border-gray-700 pb-4 md:pb-5 ">
+        <div className="mt-10 flex  items-center justify-between gap-4 border-b border-gray-700 pb-4 md:pb-5 ">
           <h1 className="mb-3 font-heading font-bold  text-4xl md:text-5xl  text-white">
             Documents
           </h1>
 
-          <UploadButton />
+          <UploadButton isSubscribed={subscriptionPlan.isSubscribed} />
         </div>
         {files && files?.length !== 0 ? (
           <ul className="mt-8 grid grid-cols-1 gap-6  md:grid-cols-2 lg:grid-cols-3">

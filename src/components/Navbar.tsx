@@ -12,35 +12,50 @@ import {
   getKindeServerSession,
 } from "@kinde-oss/kinde-auth-nextjs/server";
 import { cn } from "@/lib/utils";
+import UserAccountNav from "./UserAccountNav";
 
 type Props = {};
 
 export default async function Navbar(props: Props) {
   const { getUser } = getKindeServerSession();
   const user = getUser();
-  const isAuth = user!!;
 
   return (
     <div className="flex container sticky h-14 inset-x-0  transition-all top-4 z-30 w-full px-2 items-center justify-between ">
-      <Link href="/" className="flex z-40 font-heading  font-bold text-2xl">
+      <Link
+        href="/"
+        className="flex z-40 font-heading ml-1 md:ml-0 font-bold text-2xl"
+      >
         <span>AskDoc.</span>
       </Link>
       <div className="hidden md:block py-6 mt-2 mr-5 ">
-        <NavMenu isAuth={true} />
+        <NavMenu isAuth={user ? true : false} />
       </div>
       <div className="">
-        <LoginLink
-          className={cn(
-            "navmenu-styles",
-            buttonVariants({
-              variant: "outline",
-              size: "lg",
-            }),
-            "font-semibold font-sans text-sm"
-          )}
-        >
-          LOGIN
-        </LoginLink>
+        {!user ? (
+          <LoginLink
+            className={cn(
+              "navmenu-styles",
+              buttonVariants({
+                variant: "outline",
+                size: "lg",
+              }),
+              "font-semibold font-sans text-sm"
+            )}
+          >
+            LOGIN
+          </LoginLink>
+        ) : (
+          <UserAccountNav
+            name={
+              !user.given_name || !user.family_name
+                ? "Your Account"
+                : `${user.given_name} ${user.family_name}`
+            }
+            email={user.email ?? ""}
+            imageUrl={user.picture ?? ""}
+          />
+        )}
       </div>
     </div>
   );
