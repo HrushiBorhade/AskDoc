@@ -70,7 +70,7 @@ const Page = ({ isAuth }: { isAuth: boolean | null }) => {
   ];
 
   return (
-    <div id="pricing" className="min-h-screen">
+    <div id="pricing" className="min-h-screen ">
       <MaxWidthWrapper className="font-sans mt-40  text-center max-w-5xl">
         <div className="mx-auto  sm:max-w-lg">
           <h1 className="text-6xl font-bold font-syne text-gradient sm:text-7xl">

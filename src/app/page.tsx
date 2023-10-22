@@ -9,6 +9,7 @@ import React, { useEffect, useState } from "react";
 import signup from "../../public/document.svg";
 import Product from "@/components/Product";
 import Pricing from "@/components/Pricing";
+import Footer from "@/components/Footer";
 
 type Props = {};
 
@@ -31,7 +32,9 @@ function HomePage({}: Props) {
     (async () => {
       // @ts-ignore
       const LocomotiveScroll = (await import("locomotive-scroll")).default;
-      const locomotiveScroll = new LocomotiveScroll();
+      const locomotiveScroll = new LocomotiveScroll({
+        smooth: true,
+      });
     })();
   }, []);
   return (
@@ -64,14 +67,18 @@ function HomePage({}: Props) {
         </MaxWidthWrapper>
       </div>
 
-      <div className="relative flex flex-col  grainy2 min-h-[150vh] md:min-h-[120vh]">
-        <h1 className="heading-gradient-purple md:text-6xl text-3xl mt-20 text-center font-syne heading-styles">
+      <div
+        id="product"
+        className="relative flex flex-col  grainy2 min-h-[150vh] md:min-h-[120vh]"
+      >
+        <h1 className="heading-gradient-purple md:text-6xl text-3xl mt-20 md:mt-40 text-center font-syne heading-styles">
           Engaging & Productive
           <br /> Document Experience
         </h1>
         <Product />
       </div>
       <Pricing isAuth={isAuth} />
+      <Footer />
     </div>
   );
 }

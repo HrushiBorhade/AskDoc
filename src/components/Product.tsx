@@ -25,7 +25,7 @@ const steps = [
 ];
 const Product = (props: Props) => {
   return (
-    <div id="product">
+    <div>
       <div className="flex mt-10 flex-col lg:flex-row  flex-wrap gap-4 items-center justify-center">
         {steps.map((step, i) => {
           return (
