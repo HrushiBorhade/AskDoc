@@ -36,6 +36,7 @@
   } */
 
   :root {
+    scroll-behavior: smooth;
     ::-webkit-scrollbar {
       background-color: black;
       width: 2px;
@@ -82,16 +83,7 @@
     @apply bg-background text-foreground;
   }
 }
-html.has-scroll-smooth {
-  overflow: hidden;
-}
 
-html.has-scroll-dragging {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
 @layer utilities {
   body {
     scroll-behavior: smooth;

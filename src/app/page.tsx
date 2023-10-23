@@ -1,42 +1,31 @@
-"use client";
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
 import signup from "../../public/document.svg";
 import Product from "@/components/Product";
 import Pricing from "@/components/Pricing";
 import Footer from "@/components/Footer";
+import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 
 type Props = {};
 
 function HomePage({}: Props) {
-  const [user, setUser] = useState<any>();
-  const [isAuth, setIsAuth] = useState(null);
+  const { getUser } = getKindeServerSession();
+  const user = getUser();
+  const isAuth = !!user;
 
-  useEffect(() => {
-    const getKindeSession = async () => {
-      const res = await fetch("/api/kindeSession");
-      const data = await res.json();
-      setUser(data.user);
-      setIsAuth(data.authenticated);
-    };
-
-    getKindeSession();
-  }, []);
-
-  useEffect(() => {
-    (async () => {
-      // @ts-ignore
-      const LocomotiveScroll = (await import("locomotive-scroll")).default;
-      const locomotiveScroll = new LocomotiveScroll({
-        smooth: true,
-      });
-    })();
-  }, []);
+  // useEffect(() => {
+  //   (async () => {
+  //     // @ts-ignore
+  //     const LocomotiveScroll = (await import("locomotive-scroll")).default;
+  //     const locomotiveScroll = new LocomotiveScroll({
+  //       smooth: true,
+  //     });
+  //   })();
+  // }, []);
   return (
     <div
       className="font-sans  "
