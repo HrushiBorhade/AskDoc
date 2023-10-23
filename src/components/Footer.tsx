@@ -14,7 +14,7 @@ type Props = {};
 
 const Footer = (props: Props) => {
   return (
-    <div className="py-10 w-full relative  h-[60vh] grainy">
+    <div className="py-10 w-full relative  h-[50vh] grainy">
       <MaxWidthWrapper className="">
         <div className="py-20 border-t-2 border-slate-[rgba(255,255,255,0.05)] flex items-center justify-around gap-10  md:px-20">
           <div className="flex flex-col items-center justify-center">
