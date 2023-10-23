@@ -83,9 +83,10 @@ const UploadDropzone = ({ isSubscribed }: { isSubscribed: boolean }) => {
         startPolling({ key });
       }}
     >
-      {({ getRootProps, getInputProps, acceptedFiles }) => (
+      {({ getRootProps, getInputProps, acceptedFiles, open }) => (
         <div
           {...getRootProps()}
+          onClick={open}
           className="upload-styles rounded-2xl cursor-pointer m-2  py-12 flex justify-center items-center flex-col"
         >
           <div className="flex items-center justify-center h-full w-full">
