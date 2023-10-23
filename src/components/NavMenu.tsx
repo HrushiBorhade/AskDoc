@@ -22,7 +22,7 @@ export default function NavMenu({ isAuth }: Prop) {
     <NavigationMenu className="navmenu-styles py-[2px]">
       <NavigationMenuList>
         <NavigationMenuItem>
-          <Link href="#product" legacyBehavior passHref>
+          <Link href="/#product" legacyBehavior passHref>
             <NavigationMenuLink
               className={cn(
                 navigationMenuTriggerStyle(),
@@ -51,7 +51,7 @@ export default function NavMenu({ isAuth }: Prop) {
         ) : (
           <>
             <NavigationMenuItem>
-              <Link href="#features" legacyBehavior passHref>
+              <Link href="/#features" legacyBehavior passHref>
                 <NavigationMenuLink
                   className={cn(
                     navigationMenuTriggerStyle(),
@@ -65,7 +65,7 @@ export default function NavMenu({ isAuth }: Prop) {
           </>
         )}
         <NavigationMenuItem>
-          <Link href="#pricing" legacyBehavior passHref>
+          <Link href="/#pricing" legacyBehavior passHref>
             <NavigationMenuLink
               className={cn(
                 navigationMenuTriggerStyle(),
