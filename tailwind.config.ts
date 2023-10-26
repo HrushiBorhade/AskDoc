@@ -75,14 +75,20 @@ module.exports = {
           to: { height: 0 },
         },
         "fade-in": {
-          from: { opacity: 0, transform: "translateY(10px)" },
+          from: { opacity: 0, transform: "translateY(20px)" },
+          to: { opacity: 1, transform: "none" },
+        },
+        "fade-down": {
+          from: { opacity: 0, transform: "translateY(-20px)" },
           to: { opacity: 1, transform: "none" },
         },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        "fade-in": "fade-in 800ms var(--animation-delay,0ms) ease forwards",
+        "fade-in": "fade-in 1000ms var(--animation-delay,0ms) ease forwards",
+        "fade-down":
+          "fade-down 1000ms var(--animation-delay,0ms) ease forwards",
       },
     },
   },

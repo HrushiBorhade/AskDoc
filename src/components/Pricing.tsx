@@ -1,3 +1,4 @@
+"use client";
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import UpgradeButton from "@/components/UpgradeButton";
 import { buttonVariants } from "@/components/ui/button";
@@ -9,11 +10,15 @@ import {
 } from "@/components/ui/tooltip";
 import { PLANS } from "@/config/stripe";
 import { cn } from "@/lib/utils";
+import { useInView } from "framer-motion";
 
 import { ArrowRight, Check, Gem, HelpCircle, Minus } from "lucide-react";
 import Link from "next/link";
+import { useRef } from "react";
 
 const Page = ({ isAuth }: { isAuth: boolean | null }) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
   const pricingItems = [
     {
       plan: "Free",
@@ -72,7 +77,15 @@ const Page = ({ isAuth }: { isAuth: boolean | null }) => {
   return (
     <div id="pricing" className="min-h-screen ">
       <MaxWidthWrapper className="font-sans mt-40  text-center max-w-5xl">
-        <div className="mx-auto  sm:max-w-lg">
+        <div
+          ref={ref}
+          className="mx-auto  sm:max-w-lg"
+          style={{
+            transform: isInView ? "none" : "translateY(20px)",
+            opacity: isInView ? 1 : 0,
+            transition: "all 0.6s cubic-bezier(0.17, 0.55, 0.55, 1) 0.3s",
+          }}
+        >
           <h1 className="text-6xl font-bold font-syne text-gradient sm:text-7xl">
             Pricing
           </h1>
@@ -92,10 +105,15 @@ const Page = ({ isAuth }: { isAuth: boolean | null }) => {
               return (
                 <div
                   key={plan}
-                  className={cn("relative rounded-2xl pricing ", {
-                    " ": plan === "Pro",
-                    "": plan !== "Pro",
-                  })}
+                  className={cn(
+                    `relative rounded-2xl pricing ${
+                      plan === "Pro" ? "upgrade-border" : ""
+                    } `,
+                    {
+                      " ": plan === "Pro",
+                      "": plan !== "Pro",
+                    }
+                  )}
                 >
                   {plan === "Pro" && (
                     <div className="absolute -top-5 left-0 right-0 mx-auto w-36 rounded-full upgrade px-3 py-2 text-sm  flex items-center font-medium justify-center text-white">

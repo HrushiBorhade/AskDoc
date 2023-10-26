@@ -1,10 +1,12 @@
-import React from "react";
+"use client";
+import React, { useRef } from "react";
 import Image from "next/image";
 
 import signup from "../../public/signup.svg";
 import document from "../../public/document.svg";
 import doc from "../../public/doc.svg";
 import doccc from "../../public/doccc.svg";
+import { useInView } from "framer-motion";
 type Props = {};
 const steps = [
   {
@@ -24,15 +26,23 @@ const steps = [
   },
 ];
 const Product = (props: Props) => {
+  // const ref = useRef(null);
+  // const isInView = useInView(ref, { once: true });
   return (
     <div>
-      <div className="flex mt-10 flex-col lg:flex-row  flex-wrap gap-4 items-center justify-center">
+      <div className="flex my-20 flex-col lg:flex-row  flex-wrap gap-4 items-center justify-center">
         {steps.map((step, i) => {
           return (
             <div
+              // ref={ref}
               className={`w-[375px] md:w-[550px] h-[300px] md:h-[350px]  
               
               product relative border rounded-2xl`}
+              // style={{
+              //   transform: isInView ? "none" : "translateY(20px)",
+              //   opacity: isInView ? 1 : 0,
+              //   transition: "all 0.6s cubic-bezier(0.17, 0.55, 0.55, 1) 0.3s",
+              // }}
               key={i}
             >
               <div className="flex relative flex-col gap-2 p-4 ">

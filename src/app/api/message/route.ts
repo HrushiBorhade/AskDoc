@@ -8,7 +8,7 @@ import { PineconeStore } from "langchain/vectorstores/pinecone";
 import { NextRequest } from "next/server";
 import OpenAI from "openai";
 import { OpenAIStream, StreamingTextResponse } from "ai";
-
+export const runtime = "edge";
 export const POST = async (req: NextRequest) => {
   const body = await req.json();
   const { getUser } = getKindeServerSession();
@@ -58,14 +58,14 @@ export const POST = async (req: NextRequest) => {
     orderBy: {
       createdAt: "asc",
     },
-    take: 2,
+    take: 6,
   });
   const formattedPrevMessages = prevMessages.map((msg) => ({
     role: msg.isUserMessage ? ("user" as const) : ("ai" as const),
     content: msg.text,
   }));
 
-  const response = await openai.chat.completions.create({
+  const response = await openai.createChatCompletion({
     model: "gpt-3.5-turbo",
     temperature: 0,
     stream: true,

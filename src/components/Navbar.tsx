@@ -21,7 +21,7 @@ export default async function Navbar(props: Props) {
   const user = getUser();
 
   return (
-    <div className="flex container sticky h-14 inset-x-0  transition-all top-4 z-30 w-full px-2 items-center justify-between ">
+    <div className="flex container sticky h-14 inset-x-0  transition-all top-4 z-30 w-full px-2 items-center justify-between animate-fade-down [--animation-delay:200ms]  opacity-0 -translaye-y-[20px]">
       <Link
         href="/"
         className="flex z-40 font-heading ml-1 md:ml-0 font-bold text-2xl"

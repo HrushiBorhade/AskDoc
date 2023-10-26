@@ -9,6 +9,8 @@ import Product from "@/components/Product";
 import Pricing from "@/components/Pricing";
 import Footer from "@/components/Footer";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
+import ProductPage from "@/components/pages/ProductPage";
+import Scroll from "@/components/Scroll";
 
 type Props = {};
 
@@ -33,10 +35,11 @@ function HomePage({}: Props) {
     >
       <div className=" h-[100svh] md:h-[100vh] grainy ">
         <MaxWidthWrapper className="container flex flex-col  items-center justify-center text-center ">
-          <div className=" text-center  mt-[80px] tracking-tight font-syne heading-styles  text-5xl sm:text-5xl md:text-6xl lg:text-[72px] animate-fade-in z-0 --animation-delay:200ms] relative opacity-0 translaye-y-[10px]  text-gradient  ">
-            Ask Questions &<br /> Chat with your Documents.
-          </div>
-          {/* <Link
+          <div className="animate-fade-in  [--animation-delay:600ms] opacity-0 translaye-y-[20px] ">
+            <div className=" text-center  mt-[80px] tracking-tight font-syne heading-styles  text-5xl sm:text-5xl md:text-6xl lg:text-[72px] z-0  relative  text-gradient  ">
+              Ask Questions &<br /> Chat with your Documents.
+            </div>
+            {/* <Link
             href="/dashboard"
             className={cn(
               "navmenu-styles",
@@ -45,18 +48,20 @@ function HomePage({}: Props) {
           >
             Get Started
           </Link> */}
-          <p className="text-lg mt-4 font-poppins tracking-tight subtext-gradient">
-            Conversation with your Documents <br className="block md:hidden" />
-            have never been easier
-          </p>
-          <div className="w-[360px] h-[230px] bg-white text-black md:w-[850px] mt-20 md:mt-10 rounded-2xl md:rounded-3xl md:h-[425px] flex items-center justify-center">
+            <p className="text-lg mt-4 font-poppins tracking-tight subtext-gradient">
+              Conversation with your Documents{" "}
+              <br className="block md:hidden" />
+              have never been easier
+            </p>
+          </div>
+          <div className="w-[360px] h-[230px] bg-white text-black md:w-[850px] mt-20 md:mt-10 rounded-2xl md:rounded-3xl md:h-[425px] flex items-center justify-center animate-fade-in [--animation-delay:600ms]  opacity-0 translaye-y-[20px]">
             Product Demo Video
             <br /> (Placeholder)
           </div>
         </MaxWidthWrapper>
       </div>
 
-      <div
+      {/* <div
         id="product"
         className="relative flex flex-col  grainy2 min-h-[150vh] md:min-h-[120vh]"
       >
@@ -65,7 +70,9 @@ function HomePage({}: Props) {
           <br /> Document Experience
         </h1>
         <Product />
-      </div>
+      </div> */}
+      <Scroll />
+      <ProductPage />
       <Pricing isAuth={isAuth} />
       <Footer />
     </div>

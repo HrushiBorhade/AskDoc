@@ -26,41 +26,6 @@ const Footer = (props: Props) => {
               with your Documents
             </span>
           </div>
-          <div className="flex items-center justify-start">
-            <div className="flex flex-col items-start justify-center">
-              <Link href="/" className="font-syne ml-1  font-normal text-lg">
-                <span>Home.</span>
-              </Link>
-              <Link
-                href="/dashboard"
-                className="font-syne ml-1  font-normal text-lg"
-              >
-                <span>Dashboard.</span>
-              </Link>
-            </div>
-            {/* <div>
-              <div className="flex flex-col items-start justify-center">
-                <Link
-                  href="/"
-                  className="font-poppins ml-1  font-normal text-lg"
-                >
-                  <span>Terms & Conditions.</span>
-                </Link>
-                <Link
-                  href="/"
-                  className="font-poppins ml-1  font-normal text-lg"
-                >
-                  <span>Privacy policy.</span>
-                </Link>
-                <Link
-                  href="/"
-                  className="font-poppins ml-1  font-normal text-lg"
-                >
-                  <span>Cookies policy..</span>
-                </Link>
-              </div>
-            </div> */}
-          </div>
         </div>
       </MaxWidthWrapper>
       <div className="absolute bottom-10 w-full flex  justify-center items-center flex-col ">
@@ -77,7 +42,12 @@ const Footer = (props: Props) => {
             </Link>
           </div>
           <p className="text-xl ml-2 text-gradient font-syne  ">
-            Built by Hrushi
+            Built by
+            <span className="mx-1 underline italic underline-offset-4 decoration-zinc-500 hover:text-slate-200 hover:decoration-slate-200 transition-colors">
+              <a href="https://www.hrushiborhade.me/" target="_blank">
+                Hrushi
+              </a>
+            </span>
           </p>
         </div>
         <div>
