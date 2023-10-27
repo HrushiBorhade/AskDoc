@@ -37,7 +37,7 @@ const Product = (props: Props) => {
               // ref={ref}
               className={`w-[375px] md:w-[550px] h-[300px] md:h-[350px]  
               
-              product relative border rounded-2xl`}
+              product relative border rounded-2xl `}
               // style={{
               //   transform: isInView ? "none" : "translateY(20px)",
               //   opacity: isInView ? 1 : 0,
@@ -71,9 +71,7 @@ const Product = (props: Props) => {
                 width={350}
                 height={200}
                 alt="sign-up"
-                className={`absolute right-0  md:w-[450px] md:h-[275px] bottom-0 ${
-                  i === steps.length - 1 ? "" : ""
-                } `}
+                className={`absolute right-0  md:w-[450px] md:h-[275px] bottom-0  `}
               />
 
               {/* <div className="xl:block hidden">

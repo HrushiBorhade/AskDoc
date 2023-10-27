@@ -15,6 +15,8 @@ import ProductDemo from "@/components/ProductDemo";
 import "next-cloudinary/dist/cld-video-player.css";
 import { Suspense } from "react";
 import ProductDemoContainer from "@/components/ProductDemoContainer";
+import Navbar from "@/components/Navbar";
+
 type Props = {};
 
 function HomePage({}: Props) {
@@ -36,6 +38,7 @@ function HomePage({}: Props) {
       className="font-sans  "
       // className="bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-gray-700 via-gray-900 to-black"
     >
+      <Navbar />
       <div className=" h-[100svh] md:h-[100vh] grainy ">
         <MaxWidthWrapper className="container flex flex-col  items-center justify-center text-center ">
           <div className="animate-fade-in  [--animation-delay:600ms] opacity-0 translaye-y-[20px] ">
@@ -60,16 +63,6 @@ function HomePage({}: Props) {
           <ProductDemoContainer />
         </MaxWidthWrapper>
       </div>
-      {/* <div
-        id="product"
-        className="relative flex flex-col  grainy2 min-h-[150vh] md:min-h-[120vh]"
-      >
-        <h1 className="heading-gradient-purple md:text-6xl text-3xl mt-20 md:mt-40 text-center font-syne heading-styles">
-          Engaging & Productive
-          <br /> Document Experience
-        </h1>
-        <Product />
-      </div> */}
       <Scroll />
       <ProductPage />
       <Pricing isAuth={isAuth} />

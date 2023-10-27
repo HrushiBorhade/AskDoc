@@ -2,35 +2,57 @@ import React, { Suspense } from "react";
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import Link from "next/link";
 
-import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
+import { ArrowRight, UserCircle2 } from "lucide-react";
+import {
+  LoginLink,
+  RegisterLink,
+  getKindeServerSession,
+} from "@kinde-oss/kinde-auth-nextjs/server";
+import { cn } from "@/lib/utils";
+import UserAccountNav from "@/components/UserAccountNav";
 import { buttonVariants } from "@/components/ui/button";
 
 type Props = {};
 
-export default async function DashBoardNavbar(props: Props) {
+export default async function Navbar(props: Props) {
   const { getUser } = getKindeServerSession();
   const user = getUser();
 
   return (
-    <div className="sticky container font-sans h-18 inset-x-0 top-0  z-30 w-full pt-2  backdrop-blur-lg border-b border-gray-900 transition-all">
-      <MaxWidthWrapper className="">
-        <div className="flex h-14 md:px-10 items-center justify-between ">
-          <Link
-            href="/"
-            className="flex z-40 font-heading font-bold text-xl md:text-2xl"
+    <div className="flex container sticky h-14 inset-x-0  transition-all top-4 z-30 w-full px-2 items-center justify-between animate-fade-down [--animation-delay:200ms]  opacity-0 -translaye-y-[20px]">
+      <Link
+        href="/"
+        className="flex z-40 font-heading ml-1 md:ml-0 font-bold text-2xl"
+      >
+        <span>AskDoc.</span>
+      </Link>
+
+      <div className="">
+        {!user ? (
+          <LoginLink
+            className={cn(
+              "navmenu-styles",
+              buttonVariants({
+                variant: "outline",
+                size: "lg",
+              }),
+              "font-semibold font-sans text-sm"
+            )}
           >
-            <span>AskDoc.</span>
-          </Link>
-          <Link
-            href="/dashboard"
-            className={buttonVariants({
-              variant: "outline",
-            })}
-          >
-            DashBoard
-          </Link>
-        </div>
-      </MaxWidthWrapper>
+            LOGIN
+          </LoginLink>
+        ) : (
+          <UserAccountNav
+            name={
+              !user.given_name || !user.family_name
+                ? "Your Account"
+                : `${user.given_name} ${user.family_name}`
+            }
+            email={user.email ?? ""}
+            imageUrl={user.picture ?? ""}
+          />
+        )}
+      </div>
     </div>
   );
 }

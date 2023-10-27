@@ -1,10 +1,11 @@
 import React, { PropsWithChildren } from "react";
 import DashBoardNavbar from "./navbar";
+import Navbar from "./navbar";
 
 const layout = ({ children }: PropsWithChildren) => {
   return (
     <div>
-      {/* <DashBoardNavbar /> */}
+      <Navbar />
       {children}
     </div>
   );

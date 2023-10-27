@@ -9,7 +9,7 @@ const ProductDemo = (props: Props) => {
     <div className="">
       <CldVideoPlayer
         id="product-demo"
-        src="demo/product1"
+        src="/product1"
         height={1080}
         width={1920}
         className="w-[360px] h-[230px] md:w-[850px] mt-20 md:mt-10 rounded-2xl md:rounded-3xl md:h-[425px]"

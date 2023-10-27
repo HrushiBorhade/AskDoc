@@ -74,8 +74,6 @@ export default function RootLayout({
             fontHeading.className
           )}
         >
-          <Navbar />
-
           {children}
           <Toaster />
         </body>
