@@ -21,13 +21,13 @@
 > ### ✨ Context aware ai response with semantic query/search.
 >
 > ### ✨ Intuitive Drag n Drop uploads
-
+>
 > ### ✨ Infinite querying for message fetching
-
+>
 > ### ✨ Real time message streaming & Optimistic updates
-
+>
 > ### ✨ Interactive and functional PDF viewer
-
+>
 > ### ✨ Feedback error and success toast notifications
 
 > # <p >Get Started🔥.</p>
