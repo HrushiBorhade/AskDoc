@@ -9,7 +9,7 @@ import Dropzone from "react-dropzone";
 import { Progress } from "./ui/progress";
 import { trpc } from "@/app/_trpc/client";
 import { toast, useToast } from "./ui/use-toast";
-import { db } from "@/lib/db";
+import { db } from "@/db";
 import { useUploadThing } from "@/lib/uploadthing";
 
 const UploadDropzone = ({ isSubscribed }: { isSubscribed: boolean }) => {
