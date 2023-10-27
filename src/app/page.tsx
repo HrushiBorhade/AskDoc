@@ -11,7 +11,10 @@ import Footer from "@/components/Footer";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import ProductPage from "@/components/pages/ProductPage";
 import Scroll from "@/components/Scroll";
-
+import ProductDemo from "@/components/ProductDemo";
+import "next-cloudinary/dist/cld-video-player.css";
+import { Suspense } from "react";
+import ProductDemoContainer from "@/components/ProductDemoContainer";
 type Props = {};
 
 function HomePage({}: Props) {
@@ -54,13 +57,9 @@ function HomePage({}: Props) {
               have never been easier
             </p>
           </div>
-          <div className="w-[360px] h-[230px] bg-white text-black md:w-[850px] mt-20 md:mt-10 rounded-2xl md:rounded-3xl md:h-[425px] flex items-center justify-center animate-fade-in [--animation-delay:600ms]  opacity-0 translaye-y-[20px]">
-            Product Demo Video
-            <br /> (Placeholder)
-          </div>
+          <ProductDemoContainer />
         </MaxWidthWrapper>
       </div>
-
       {/* <div
         id="product"
         className="relative flex flex-col  grainy2 min-h-[150vh] md:min-h-[120vh]"

@@ -10,6 +10,8 @@ import { Poppins, Montserrat, Lato, Syne } from "next/font/google";
 import "react-loading-skeleton/dist/skeleton.css";
 import "simplebar-react/dist/simplebar.min.css";
 import { Toaster } from "@/components/ui/toaster";
+import "next-cloudinary/dist/cld-video-player.css";
+import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 export const fontSans = FontSans({
   subsets: ["latin"],
   variable: "--font-sans",
@@ -46,6 +48,9 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const { getUser } = getKindeServerSession();
+  const user = getUser();
+  const isAuth = !!user;
   return (
     <Providers>
       <html lang="en">
