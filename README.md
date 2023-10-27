@@ -4,11 +4,19 @@
 
 <img width="1420" alt="Screenshot 2023-10-27 at 7 11 14 PM" src="https://github.com/HrushiBorhade/AskDoc/assets/89704093/a0823b12-7919-43d8-8b82-81c67ebb3126">
 
-## <p align="center">Engaging & Productive Document Experience.</p>
+## <p align="center">Get Started.</p>
 
 ### <p align="center"><img width="1357" alt="thumbnail2" src="https://github.com/HrushiBorhade/AskDoc/assets/89704093/3315f52e-614b-4872-9485-08ad06ea531a"></p>
 
 ## Tech stack
+
+> ### 🛠️ Nextjs 13 | Typescript | tRPC (T3 Stack)
+>
+> ### 🤖 Langchain | Pinecone | OpenAI
+>
+> ### ✦ Postgresql | Prisma
+>
+> ### 👨🏻‍💻 React-query | Zod | UploadThing
 
 ## Semantic Querying
 
@@ -21,6 +29,12 @@
 ### Authentication-Flow
 
 ![auth-flow](https://github.com/HrushiBorhade/AskDoc/assets/89704093/3ee0fa13-3ab3-4073-907e-9df700c63ad4)
+
+![dashboard](https://github.com/HrushiBorhade/AskDoc/assets/89704093/c9baa9a2-50be-479d-b437-c367f2eb15a2)
+![file-upload](https://github.com/HrushiBorhade/AskDoc/assets/89704093/a7f85c61-4697-4df2-8103-558dd69ddf47)
+![document-view](https://github.com/HrushiBorhade/AskDoc/assets/89704093/8f6270e3-5489-414b-be56-9fcf184a7b7d)
+![infinite-query](https://github.com/HrushiBorhade/AskDoc/assets/89704093/66520f28-1ed9-442a-9d68-411bcce32352)
+![message-streaming   Optimistic-updates](https://github.com/HrushiBorhade/AskDoc/assets/89704093/08cf9e0c-fb92-4152-8364-b7823c0ab993)
 
 ## Instructions
 
