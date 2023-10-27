@@ -39,7 +39,7 @@ function HomePage({}: Props) {
       // className="bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-gray-700 via-gray-900 to-black"
     >
       <Navbar />
-      <div className=" h-[100svh] md:h-[100vh] grainy ">
+      <div className=" h-[100svh] grainy ">
         <MaxWidthWrapper className="container flex flex-col  items-center justify-center text-center ">
           <div className="animate-fade-in  [--animation-delay:600ms] opacity-0 translaye-y-[20px] ">
             <div className=" text-center  mt-[80px] tracking-tight font-syne heading-styles  text-5xl sm:text-5xl md:text-6xl lg:text-[72px] z-0  relative  text-gradient  ">
@@ -59,8 +59,8 @@ function HomePage({}: Props) {
               <br className="block md:hidden" />
               have never been easier
             </p>
+            <ProductDemoContainer />
           </div>
-          <ProductDemoContainer />
         </MaxWidthWrapper>
       </div>
       <Scroll />

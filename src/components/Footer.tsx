@@ -15,7 +15,7 @@ type Props = {};
 const Footer = (props: Props) => {
   return (
     <div className="py-10 w-full relative  h-[50vh] grainy">
-      <MaxWidthWrapper className="">
+      <MaxWidthWrapper className="mb-5">
         <div className="py-20 border-t-2 border-slate-[rgba(255,255,255,0.05)] flex items-center justify-around gap-10  md:px-20">
           <div className="flex flex-col items-center justify-center">
             <span className="text-gradient font-syne ml-1  font-bold text-4xl">
@@ -51,7 +51,7 @@ const Footer = (props: Props) => {
           </p>
         </div>
         <div>
-          <p className="text-lg mt-5 text-gradient font-poppins  ">
+          <p className="text-lg mt-5 subtext-gradient font-poppins  ">
             © 2023 AskDoc. All rights reserved.
           </p>
         </div>

@@ -58,7 +58,7 @@ export const POST = async (req: NextRequest) => {
     orderBy: {
       createdAt: "asc",
     },
-    take: 2,
+    take: 3,
   });
   const formattedPrevMessages = prevMessages.map((msg) => ({
     role: msg.isUserMessage ? ("user" as const) : ("ai" as const),

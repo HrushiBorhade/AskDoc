@@ -16,7 +16,7 @@ type Props = {};
 const Scroll = (props: Props) => {
   return (
     <>
-      <div id="features" className="sliders my-10 ">
+      <div id="features" className="sliders my-10 lg:my-20">
         <div className="words">
           <div className="words-slide font-syne font-semibold ">
             <span className="words-css">Infinite AI-Memory </span>
