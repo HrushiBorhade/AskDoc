@@ -2,6 +2,16 @@
 
 > # <p align="center"> Ask Questions and Chat with your Pdf Documents. </p>
 
+
+
+
+
+
+
+https://github.com/HrushiBorhade/AskDoc/assets/89704093/330fca34-e2e7-4bd2-b495-74bcfb50739c
+
+
+
 <img width="1420" alt="Screenshot 2023-10-27 at 7 11 14 PM" src="https://github.com/HrushiBorhade/AskDoc/assets/89704093/a0823b12-7919-43d8-8b82-81c67ebb3126">
 
 ## Tech stack
